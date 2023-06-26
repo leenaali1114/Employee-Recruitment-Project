@@ -1,0 +1,58 @@
+{% include 'adminheader.html' %}
+<br><br><br><br><br>
+<style type="text/css">
+	table{
+		border: 1px solid gray;
+		width: 70%;
+		padding: 10px;
+		background-color:lightgrey;
+	}
+	tr{
+		border: 1px solid white;
+		padding: 10px;
+	}
+	th{
+		border: 1px solid white;
+		padding: 10px;
+		text-align: center;
+	}
+	td{
+		border: 1px solid white;
+		padding: 10px;
+	}
+
+</style>
+<body>
+<h1 align="center" style="color:black;">Registered Users</h1>
+<br><br>
+	<form method="post">
+		<center>
+	<table align="Center">
+		<tr>
+          <th><font color="purple">Name</font></th>
+          <th><font color="purple">Address</font></th>
+			<th><font color="purple">Gender</font></th>
+			<th><font color="purple">Contact No.</font></th>
+			<th><font color="purple">Email</font></th>
+			<th><font color="purple">Place</font></th>
+		</tr>
+		{% for row in data['us'] %}
+		<tr>
+			<td>{{row['NAME']}}</td>
+			<td>{{row['address']}}</td>
+			<td>{{row['gender']}}</td>
+			<td>{{row['phone']}}</td>
+			<td>{{row['email']}}</td>
+			<td>{{row['place']}}</td>
+          <td><a href="?action=delete&id={{row['user_id']}}&id1={{row['login_id']}}" class="btn btn-primary">Remove Data</td>
+		</tr>
+		{% endfor %}
+	</table>
+</center>
+</form>
+</body>
+
+<br><br>
+
+
+{% include 'footer.html' %}

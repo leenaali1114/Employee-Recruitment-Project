@@ -1,0 +1,154 @@
+{% include 'employeeheader.html' %}
+<br><br><br><br><br>
+<style type="text/css">
+	table{
+		border: 1px solid gray;
+		width: 70%;
+		padding: 10px;
+		background-color:lightgrey;
+	}
+	tr{
+		border: 1px solid white;
+		padding: 10px;
+	}
+	th{
+		border: 1px solid white;
+		padding: 10px;
+		text-align: center;
+	}
+	td{
+		border: 1px solid white;
+		padding: 10px;
+	}
+input[type=text]{
+            width: 90%;
+            padding: 12px;
+            border: 1px solid #ccc;
+            border-radius: 4px;
+            resize: vertical;
+        }
+        input[type=password]{
+            width: 90%;
+            padding: 12px;
+            border: 1px solid #ccc;
+            border-radius: 4px;
+            resize: vertical;
+
+        }
+        input[type=number]{
+            width: 90%;
+            padding: 12px;
+            border: 1px solid #ccc;
+            border-radius: 4px;
+            resize: vertical;
+
+        }
+
+        input[type=email]{
+            width: 90%;
+            padding: 12px;
+            border: 1px solid #ccc;
+            border-radius: 4px;
+            resize: vertical;
+
+        }
+        textarea{
+            width: 90%;
+            padding: 12px;
+            border: 1px solid #ccc;
+            border-radius: 4px;
+            resize: vertical;
+        }
+        input[type=radio]{
+            width: 20%;
+            padding: 12px;
+            border: 1px solid #ccc;
+            border-radius: 4px;
+            resize: vertical;
+
+        }
+        input[type=submit]
+        {
+            width: 20%;
+            padding: 12px;
+            border: 1px solid #ccc;
+            border-radius: 4px;
+            resize: vertical;
+        }
+
+</style>
+<body>
+<h1 align="center" style="color:black;">My Profile</h1>
+<br><br>
+	<form method="post">
+		{% if data['updateprt'] %}
+		 <table  align="Center">
+        <tr class="tr">
+                <th>Employee Name</th>
+                <td class="td">
+                    <input type="text" name="ename" value="{{data['updateprt'][0]['emp_name']}}">
+                </td>
+            </tr>
+              <tr class="tr">
+                <th>Email</th>
+                <td class="td">
+                    <input type="email" name="email" value="{{data['updateprt'][0]['emp_email']}}">
+                </td>
+            </tr>
+            <tr class="tr">
+                <th>Details</th>
+                <td class="td">
+                  <textarea name="edetails">{{data['updateprt'][0]['emp_details']}}</textarea>
+                </td>
+            </tr>
+
+                <tr class="tr">
+                <th>Phone</th>
+                <td class="td">
+                    <input type="text" name="phone" value="{{data['updateprt'][0]['emp_phone']}}" pattern="[0-9]{10}">
+                </td>
+            </tr>
+               <tr class="tr">
+                <th>Address</th>
+                <td class="td">
+                  <textarea name="address">{{data['updateprt'][0]['emp_address']}}</textarea>
+                </td>
+            </tr>
+           	<tr class="tr">
+           		<td colspan="2" align="center" class="td">
+           			<input type="submit" name="update" value="Edit Now" class="btn btn-primary">
+           		</td>
+           	</tr>
+           </table>
+		{% else %}
+		<center>
+	<table align="Center">
+		<tr>
+          <th><font color="purple">Employee Name</font></th>
+          <th><font color="purple">Address</font></th>
+			<th><font color="purple">Contact No.</font></th>
+			<th><font color="purple">Email</font></th>
+            <th><font color="purple">Employee Objectives</font></th>
+
+		</tr>
+		{% for row in data['emp'] %}
+		<tr>
+			<td>{{row['emp_name']}}</td>
+			<td>{{row['emp_address']}}</td>
+			<td>{{row['emp_phone']}}</td>
+			<td>{{row['emp_email']}}</td>
+			<td>{{row['emp_details']}}</td>
+			<td><a href="?action=update&id={{row['employee_id']}}&id1={{row['login_id']}}" class="btn btn-primary">Edit Account</td>
+          <td><a href="?action=delete&id={{row['employee_id']}}&id1={{row['login_id']}}" class="btn btn-primary">Remove Account</td>
+		</tr>
+		{% endfor %}
+	</table>
+</center>
+		{% endif %}
+</form>
+</body>
+
+<br><br>
+<br><br><br><br>
+
+{% include 'footer.html' %}

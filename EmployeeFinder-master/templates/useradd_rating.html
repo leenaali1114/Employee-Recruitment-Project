@@ -1,0 +1,118 @@
+{% include 'userheader.html' %}
+<html>
+  <head>
+    <style >
+      *{
+          margin: 0;
+          padding: 0;
+      }
+      .rate {
+          float: left;
+          height: 46px;
+          margin-left: 48px;
+      }
+      .rate:not(:checked) > input {
+          position:absolute;
+          top:-9999px;
+      }
+      .rate:not(:checked) > label {
+          float:right;
+          width:1em;
+          overflow:hidden;
+          white-space:nowrap;
+          cursor:pointer;
+          font-size:30px;
+          color:#ccc;
+      }
+      .rate:not(:checked) > label:before {
+          content: '★ ';
+      }
+      .rate > input:checked ~ label {
+          color: #ffc700;
+      }
+      .rate:not(:checked) > label:hover,
+      .rate:not(:checked) > label:hover ~ label {
+          color: #deb217;
+      }
+      .rate > input:checked + label:hover,
+      .rate > input:checked + label:hover ~ label,
+      .rate > input:checked ~ label:hover,
+      .rate > input:checked ~ label:hover ~ label,
+      .rate > label:hover ~ input:checked ~ label {
+          color: #c59b08;
+      }
+      .main1{
+      width: 100%;
+      height: 637px;
+
+
+  }
+  .th{
+    color: #fff;
+  }
+  .textarea{
+    border-radius: 10px;
+    margin-left: 53px;
+    padding-left: 11px;
+    padding-right: 11px;
+
+  }
+  .img{
+    width: 201px;
+      height: 308px;
+      margin-left: -38%;
+      margin-top: -6%;
+      position: absolute;
+  }
+  .h1{
+    margin-left: 114px;
+  }
+  </style>
+  </head>
+  <body style="background:white;">
+    <form method="post">
+      <center>
+
+
+
+    <div class="main1">
+      <br><br><br><br><br>
+        <h1 class="h1">Reviews and Ratings</h1>
+        <br><br><br>
+        <table  style="width: 40%" >
+
+           <th class="th">Rating</th>
+                    <td>
+                        <div class="rate">
+                            <input type="radio" id="star5" name="rate" value="5" required=""/ style="color: pink;">
+                            <label for="star5" title="text">5 stars</label>
+                            <input type="radio" id="star4" name="rate" value="4" required=""/>
+                            <label for="star4" title="text">4 stars</label>
+                            <input type="radio" id="star3" name="rate" value="3" required=""/>
+                            <label for="star3" title="text">3 stars</label>
+                            <input type="radio" id="star2" name="rate" value="2" required="" />
+                            <label for="star2" title="text">2 stars</label>
+                            <input type="radio" id="star1" name="rate" value="1" required=""/>
+                            <label for="star1" title="text">1 star</label>
+                        </div>
+                    </td>
+            </tr>
+          <tr>
+            <th class="th">Reviews</th>
+            <td><textarea class="textarea" name="des" rows="4" cols="50"></textarea></td>
+          </tr>
+          <tr>
+          <tr>
+            <td colspan="2" align="center"><input type="submit" name="submit" value="submit" class="btn btn-primary"></td>
+          </tr>
+
+    </table>
+    </div>
+      </center>
+    </form>
+  </body>
+  </html>
+{% include 'footer.html' %}
+
+
+

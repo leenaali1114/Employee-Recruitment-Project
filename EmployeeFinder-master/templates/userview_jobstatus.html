@@ -1,0 +1,71 @@
+{% include 'userheader.html' %}
+<br><br><br><br><br>
+<style type="text/css">
+	table{
+		border: 1px solid gray;
+		width: 70%;
+		padding: 10px;
+		background-color:lightgrey;
+	}
+	tr{
+		border: 1px solid white;
+		padding: 10px;
+	}
+	th{
+		border: 1px solid white;
+		padding: 10px;
+		text-align: center;
+	}
+	td{
+		border: 1px solid white;
+		padding: 10px;
+	}
+
+</style>
+<body>
+<h1 align="center" style="color:black;">Job Details</h1>
+<br><br>
+	<form method="post">
+		<center>
+	<table align="Center">
+		<tr>
+          <th><font color="purple">User Name</font></th>
+          <th><font color="purple">Employee Name</font></th>
+          <th><font color="purple">Skill Title</font></th>
+			<th><font color="purple">Job Title</font></th>
+			<th><font color="purple">Job Details</font></th>
+			<th><font color="purple">Job Type</font></th>
+			<th><font color="purple">Job Status</font></th>
+		</tr>
+		{% for row in data['jo'] %}
+		<tr>
+            <td>{{row['NAME']}}</td>
+			<td>{{row['emp_name']}}</td>
+			<td>{{row['skill_name']}}</td>
+			<td>{{row['job_title']}}</td>
+			<td>{{row['job_des']}}</td>
+			<td>{{row['job_type']}}</td>
+			   {% if row['job_status'] == 'Offer Accepted' %}
+    <td>
+        <a href="/user/work_duration?id={{row['job_id']}}" style="text-decoration: none" class="btn btn-primary">Work Duration</a>
+        <a href="/user/add_payment?id={{row['job_id']}}" style="text-decoration: none" class="btn btn-primary">Payment</a>&nbsp;&nbsp;
+		<br><br>
+		<a href="/user/work_status?id={{row['job_id']}}" style="text-decoration: none" class="btn btn-primary">Work Status</a>
+		<a href="/user/view_payment?id={{row['job_id']}}" style="text-decoration: none" class="btn btn-primary">Payment Status</a>
+	</td>
+{% else %}
+    <td>
+        <font color="black"><b>{{row['job_status']}}</b></font>
+    </td>
+{% endif %}
+		</tr>
+		{% endfor %}
+	</table>
+</center>
+</form>
+</body>
+
+<br><br>
+<br><br><br><br>
+
+{% include 'footer.html' %}

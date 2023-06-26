@@ -1,0 +1,62 @@
+{% include 'userheader.html' %}
+<br><br><br><br><br>
+<style type="text/css">
+	table{
+		border: 1px solid gray;
+		width: 90%;
+		padding: 10px;
+		background-color:lightgrey;
+	}
+	tr{
+		border: 1px solid white;
+		padding: 10px;
+	}
+	th{
+		border: 1px solid white;
+		padding: 10px;
+		text-align: center;
+	}
+	td{
+		border: 1px solid white;
+		padding: 10px;
+	}
+
+</style>
+<body>
+<h1 align="center" style="color:black;">Registered Employee</h1>
+<br><br>
+	<form method="post">
+		<center>
+	<table align="Center">
+		<tr>
+          <th><font color="purple">Employee Name</font></th>
+          <th><font color="purple">Address</font></th>
+			<th><font color="purple">Contact No.</font></th>
+			<th><font color="purple">Email</font></th>
+            <th><font color="purple">Employee Objectives</font></th>
+
+		</tr>
+		{% for row in data['emp'] %}
+		<tr>
+			<td>{{row['emp_name']}}</td>
+			<td>{{row['emp_address']}}</td>
+			<td>{{row['emp_phone']}}</td>
+			<td>{{row['emp_email']}}</td>
+			<td>{{row['emp_details']}}</td>
+		<td><a href="\user\view_skill?id={{row['employee_id']}}" class="btn btn-primary">View Skill</td>
+		<td><a href="\user\view_reference?id={{row['employee_id']}}" class="btn btn-primary">View Reference</td>
+			<td><a href="\user\add_rating?id={{row['employee_id']}}" class="btn btn-primary">Add Rating</td>
+			<td><a href="\user\view_rating?id={{row['employee_id']}}" class="btn btn-primary">View Rating</td>
+
+
+		</tr>
+		{% endfor %}
+	</table>
+</center>
+</form>
+</body>
+
+<br><br>
+<br><br><br><br>
+
+{% include 'footer.html' %}

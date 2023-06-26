@@ -1,0 +1,109 @@
+{% include 'userheader.html' %}
+<head>
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+<style>
+  .grid-container{
+    display: grid;
+    grid-template-columns: auto auto auto;
+    background-color: white;
+    grid-row-gap: 5px;
+    grid-column-gap: 10px;
+  } 
+  .grid-item {
+    background-color: white;
+    padding: 10px;
+    border: 1px solid black;
+    border-radius: 15px;
+    text-align: center;
+    }
+  
+  table{
+    background-color: lightyellow;
+    padding: 30px;
+    text-align: center;
+  
+    }
+  td{
+    width:50%;
+    padding: 20px;
+    font-family: Calibri;
+    font-size: 20px;
+    resize:vertical;
+  }
+  tr{
+    width:50%;
+    padding: 20px;
+  
+    font-family: Calibri;
+    font-size: 20px;
+    resize:vertical;
+  }
+ select{
+    width: 38%;
+    height: 56px;
+    font-family: Calibri;
+    font-size: 20px;
+    resize: vertical;
+    border-radius: 48px;
+    border:none;
+    padding-left: 15px;
+    background: #21202017;
+  }
+    input[type=submit]{
+    width:95%;
+    padding: 20px;
+  
+    font-family: Calibri;
+    font-size: 20px;
+    resize:vertical;
+  }
+  .btn{
+    width: 8%;
+    height: 57px;
+    color: #dcdcf1;
+    margin-left: -100px;
+    margin-top: -5px;
+    background: #7ab730;
+    border-radius: 56px;
+  }
+  </style>
+</head>
+<body>
+  <br><br>
+      <form method="post">
+          &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;
+          <select  name="name" >
+            <option>Select</option>
+            {% for row in data['pl'] %}
+            <option value="{{row['skill_id']}}">{{row['skill_name']}}</option>
+            {% endfor %}
+          </select>
+  <button class="btn" type="submit" name= "submit" class="btn btn-sm"><i class="fa fa-search"></i></button>
+  <br><br><br><br>
+    <body style="background:white;">
+    
+  <div class="grid-container">
+    
+         <table align="Center">
+             		{% for row in data['viewsearch'] %}
+
+		<tr>
+          <th><font color="purple">Employee Name :</font></th>
+            <td>{{row['emp_name']}}</td>
+        </tr>
+             <tr>
+          <th><font color="purple">Skill Title :</font></th>
+             <td>{{row['skill_name']}}</td> </tr>
+			 <tr><th><font color="purple">Description :</font></th>
+             <td>{{row['skill_des']}}</td> </tr>
+			 <tr><th><font color="purple">Experience :</font></th>
+             <td>{{row['skill_experience']}}</td> </tr>
+		</tr>
+		{% endfor %}
+	</table>
+  </div>
+</form>
+
+<br><br><br><br><br><br><br><br><br>
+{% include 'footer.html' %}

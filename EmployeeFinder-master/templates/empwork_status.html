@@ -1,0 +1,69 @@
+{% include 'employeeheader.html' %}
+<br><br><br><br><br>
+<style type="text/css">
+	table{
+		border: 1px solid gray;
+		width: 70%;
+		padding: 10px;
+		background-color:lightgrey;
+	}
+	tr{
+		border: 1px solid white;
+		padding: 10px;
+	}
+	th{
+		border: 1px solid white;
+		padding: 10px;
+		text-align: center;
+	}
+	td{
+		border: 1px solid white;
+		padding: 10px;
+	}
+
+</style>
+<body>
+<h1 align="center" style="color:black;">Work Status</h1>
+<br><br>
+	<form method="post">
+		<center>
+	<table align="Center">
+		<tr>
+			<th><font color="purple">User Name</font></th>
+          <th><font color="purple">Employee Name</font></th>
+          <th><font color="purple">Work Description</font></th>
+          <th><font color="purple">Start Date</font></th>
+          <th><font color="purple">End Date</font></th>
+          <th><font color="purple">Work Location</font></th>
+          <th><font color="purple">Work Status</font></th>
+		</tr>
+		{% for row in data['wo'] %}
+		<tr>
+			<td>{{row['NAME']}}</td>
+			<td>{{row['emp_name']}}</td>
+			<td>{{row['work_des']}}</td>
+            <td>{{row['start_date']}}</td>
+			<td>{{row['end_date']}}</td>
+			<td>{{row['work_location']}}</td>
+             {% if row['work_status'] == 'Pending' %}
+    <td>
+        <a href="/employee/work_status?id1={{row['work_id']}}&id={{row['job_id']}}" style="text-decoration: none" class="btn btn-primary">Accept</a>
+        <a href="/employee/work_status?id2={{row['work_id']}}&id={{row['job_id']}}" style="text-decoration: none" class="btn btn-primary">Reject</a>
+    </td>
+{% else %}
+    <td>
+        <font color="black"><b>{{row['work_status']}}</b></font>
+
+    </td>
+		</tr>
+		{% endif %}
+
+		{% endfor %}
+	</table>
+</center>
+</form>
+</body>
+<br><br>
+<br><br><br><br>
+
+{% include 'footer.html' %}
